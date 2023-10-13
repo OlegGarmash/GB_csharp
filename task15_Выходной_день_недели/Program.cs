@@ -6,15 +6,15 @@
 System.Console.WriteLine("Введите число 1-7: ");
 int dayNumber = Convert.ToInt32(Console.ReadLine());
 
-if (dayNumber > 5)
+if (dayNumber > 7 || dayNumber < 1)
 {
-    System.Console.WriteLine($"{dayNumber} -> Выходной день");
+    System.Console.WriteLine("Ошибка");
 }
 else if (dayNumber < 6)
 {
     System.Console.WriteLine($"{dayNumber} -> Будний");
 }
-else
+else if (dayNumber > 5)
 {
-    System.Console.WriteLine("Ошибка");
+    System.Console.WriteLine($"{dayNumber} -> Выходной день");
 }
