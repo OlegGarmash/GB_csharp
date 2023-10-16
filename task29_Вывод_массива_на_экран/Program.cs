@@ -4,10 +4,9 @@
 6, 1, 33 -> [6, 1, 33]
 */
 
-System.Console.WriteLine("Введите размер массива:");
+System.Console.Write("Введите размер массива: ");
 int arraySize = Convert.ToInt32(Console.ReadLine());
-
-
+System.Console.WriteLine();
 
 int[] GetArray(int size)
 {
@@ -15,9 +14,8 @@ int[] GetArray(int size)
 
     for (int i = 0; i < size; i++)
     {
-        System.Console.WriteLine($"Введите эллемент массива №{i + 1}:");
-        int temp = Convert.ToInt32(Console.ReadLine());
-        array[i] = temp;
+        System.Console.Write($"Введите эллемент массива № {i + 1}: ");
+        array[i] = Convert.ToInt32(Console.ReadLine());
     }
     return array;
 }
@@ -28,18 +26,26 @@ void PrintArray(int[] arr)
     {
         if (i < arr.Length - 1)
             System.Console.Write($"{arr[i]}, ");
-        else if (i == arr.Length - 1)
+        else
             System.Console.Write($"{arr[i]}");
     }
-    System.Console.Write($" -> [");
-    for (int i = 0; i < arr.Length; i++)
-    {
-        if (i < arr.Length - 1)
-            System.Console.Write($"{arr[i]}, ");
-        else if (i == arr.Length - 1)
-            System.Console.Write($"{arr[i]}]");
-    }
+    //Метод 1:
+    // System.Console.Write($" -> [");
+    // for (int i = 0; i < arr.Length; i++)
+    // {
+    //     if (i < arr.Length - 1)
+    //         System.Console.Write($"{arr[i]}, ");
+    //     else
+    //         System.Console.Write($"{arr[i]}]");
+    // }
 }
 
 int[] userArray = GetArray(arraySize);
+System.Console.WriteLine();
+
 PrintArray(userArray);
+
+//Метод 2:
+System.Console.Write(" -> [");
+PrintArray(userArray);
+System.Console.Write("]");
