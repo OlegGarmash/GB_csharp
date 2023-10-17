@@ -12,7 +12,22 @@ int userB = Convert.ToInt32(Console.ReadLine());
 
 double PowerUp(int a, int b)
 {
-    double result = Math.Pow(a, b);
+    double result = 1;
+    if (b > 0)
+    {
+        for (int i = 0; i < b; i++)
+        {
+            result = result * a;
+        }
+    }
+    else if (b < 0)
+    {
+        b = b * -1;
+        for (int i = 0; i < b; i++)
+        {
+            result = result / a;
+        }
+    }
     return result;
 }
 

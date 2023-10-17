@@ -30,14 +30,14 @@ void PrintArray(int[] arr)
             System.Console.Write($"{arr[i]}");
     }
     //Метод 1:
-    // System.Console.Write($" -> [");
-    // for (int i = 0; i < arr.Length; i++)
-    // {
-    //     if (i < arr.Length - 1)
-    //         System.Console.Write($"{arr[i]}, ");
-    //     else
-    //         System.Console.Write($"{arr[i]}]");
-    // }
+    System.Console.Write($" -> [");
+    for (int i = 0; i < arr.Length; i++)
+    {
+        if (i < arr.Length - 1)
+            System.Console.Write($"{arr[i]}, ");
+        else
+             System.Console.Write($"{arr[i]}]");
+    }
 }
 
 int[] userArray = GetArray(arraySize);
@@ -46,6 +46,6 @@ System.Console.WriteLine();
 PrintArray(userArray);
 
 //Метод 2:
-System.Console.Write(" -> [");
+/*System.Console.Write(" -> [");
 PrintArray(userArray);
-System.Console.Write("]");
+System.Console.Write("]");*/
