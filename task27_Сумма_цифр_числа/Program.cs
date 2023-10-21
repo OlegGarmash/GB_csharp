@@ -15,7 +15,6 @@ int Sum(int a)
     for (int i = a; i > 0; i /= 10)
     {
         result = result + a % 10;
-        a /= 10;
     }
     return result;
 }
