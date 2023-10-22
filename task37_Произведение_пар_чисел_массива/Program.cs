@@ -25,16 +25,15 @@ int[] GenerateArray(int size, int minValue, int maxValue)
 
 int[] Multiplication(int[] array)
 {
-    int size = array.Length / 2;
-    if (array.Length % 2 != 0)
-        size = (array.Length + 1) / 2;
+    int size = array.Length - array.Length / 2;
     int[] result = new int[size];
-    if (array.Length % 2 != 0)
-        result[size - 1] = array[size - 1];
-    for (int i = 0; i < size - 1; i++)
+    System.Console.WriteLine(size);
+    for (int i = 0; i < size; i++)
     {
         result[i] = array[i] * array[array.Length - 1 - i];
     }
+    if (array.Length % 2 != 0)
+        result[size - 1] = array[size - 1];
     return result;
 }
 
