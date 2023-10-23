@@ -27,7 +27,6 @@ int[] Multiplication(int[] array)
 {
     int size = array.Length - array.Length / 2;
     int[] result = new int[size];
-    System.Console.WriteLine(size);
     for (int i = 0; i < size; i++)
     {
         result[i] = array[i] * array[array.Length - 1 - i];
@@ -39,7 +38,7 @@ int[] Multiplication(int[] array)
 
 void PrintArray(int[] arrayOne, int[] arrayTwo)
 {
-    System.Console.Write("[");
+    System.Console.Write("\n[");
     for (int i = 0; i < arrayOne.Length; i++)
     {
         System.Console.Write(arrayOne[i]);
