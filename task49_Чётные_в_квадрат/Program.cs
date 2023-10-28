@@ -33,28 +33,17 @@ double[,] GenerateMatrix(int rows, int columns, int minValue, int maxValue)
     return matrix;
 }
 
-double[,] CloneMatrix(double[,] matrixOne)
+double[,] NewMatrix(double[,] matrixOne)
 {
-    double[,] matrixClone = new double[matrixOne.GetLength(0), matrixOne.GetLength(1)];
+    double[,] matrixTwo = new double[matrixOne.GetLength(0), matrixOne.GetLength(1)];
     for (int i = 0; i < matrixOne.GetLength(0); i++)
     {
         for (int j = 0; j < matrixOne.GetLength(1); j++)
         {
-            matrixClone[i, j] = matrixOne[i, j];
-        }
-    }
-    return matrixClone;
-}
-
-double[,] NewMatrix(double[,] matrixOne)
-{
-    double[,] matrixTwo = CloneMatrix(matrixOne);
-    for (int i = 0; i < matrixTwo.GetLength(0); i++)
-    {
-        for (int j = 0; j < matrixTwo.GetLength(1); j++)
-        {
             if (i % 2 == 0 && j % 2 == 0)
-                matrixTwo[i, j] = Math.Pow(matrixTwo[i, j], 2);
+                matrixTwo[i, j] = Math.Pow(matrixOne[i, j], 2);
+            else
+                matrixTwo[i, j] = matrixOne[i, j];
         }
     }
     return matrixTwo;
@@ -76,11 +65,15 @@ void PrintMatrix(double[,] matrixOne, double[,] matrixTwo)
     }
     Console.ResetColor();
     System.Console.WriteLine("\nНовый массив:");
-    Console.ForegroundColor = ConsoleColor.DarkYellow;
+    //Console.ForegroundColor = ConsoleColor.DarkYellow;
     for (int i = 0; i < matrixTwo.GetLength(0); i++)
     {
         for (int j = 0; j < matrixTwo.GetLength(1); j++)
         {
+            if (i % 2 == 0 && j % 2 == 0)
+                Console.ForegroundColor = ConsoleColor.DarkYellow;
+            else
+                Console.ForegroundColor = ConsoleColor.DarkBlue;
             System.Console.Write(matrixTwo[i, j]);
             if (j < matrixTwo.GetLength(1) - 1)
                 System.Console.Write("\t");
