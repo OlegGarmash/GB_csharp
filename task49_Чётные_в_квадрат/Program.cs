@@ -36,12 +36,10 @@ double[,] GenerateMatrix(int rows, int columns, int minValue, int maxValue)
 double[,] CloneMatrix(double[,] matrixOne)
 {
     double[,] matrixClone = new double[matrixOne.GetLength(0), matrixOne.GetLength(1)];
-    // double a = 0;
     for (int i = 0; i < matrixOne.GetLength(0); i++)
     {
         for (int j = 0; j < matrixOne.GetLength(1); j++)
         {
-            //a = matrixOne[i, j];
             matrixClone[i, j] = matrixOne[i, j];
         }
     }
