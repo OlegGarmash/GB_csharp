@@ -1,14 +1,14 @@
 ﻿/*
-Напишите программу, которая перевернёт одномерный массив (последний элемент будет на первом месте, а первый - на последнем и т.д.)
-
-[1 2 3 4 5] -> [5 4 3 2 1]
-[6 7 3 6] -> [6 3 7 6]
+Напишите программу, которая будет создавать копию заданного
+одномерного массива с помощью поэлементного копирования.
 */
 
 int Prompt(string massage)
 {
     System.Console.Write(massage);
+    Console.ForegroundColor = ConsoleColor.DarkGreen;
     int result = Convert.ToInt32(Console.ReadLine());
+    Console.ResetColor();
     return result;
 }
 
@@ -22,41 +22,41 @@ int[] GenerateArray(int size, int minValue, int maxValue)
     return array;
 }
 
-int[] Reverse(int[] array)
+int[] CopyArray(int[] array)
 {
-    int[] revArray = new int[array.Length];
-    for (int i = 0; i <= revArray.Length / 2; i++)
-    {
-        revArray[i] = array[array.Length - 1 - i];
-        revArray[revArray.Length - 1 - i] = array[i];
-    }
-    return revArray;
+    int[] copy = new int[array.Length];
+    array.CopyTo(copy, 0);
+    return copy;
 }
 
 void PrintArray(int[] arrayOne, int[] arrayTwo)
 {
     System.Console.WriteLine("\nМассив:");
-    Console.ForegroundColor = ConsoleColor.DarkBlue;
+    
     System.Console.Write("[");
+    Console.ForegroundColor = ConsoleColor.DarkBlue;
     for (int i = 0; i < arrayOne.Length; i++)
     {
         System.Console.Write(arrayOne[i]);
         if (i < arrayOne.Length - 1)
             System.Console.Write(", ");
     }
+    Console.ResetColor();
     System.Console.Write("] -> [");
+    Console.ForegroundColor = ConsoleColor.DarkGreen;
     for (int i = 0; i < arrayTwo.Length; i++)
     {
         System.Console.Write(arrayTwo[i]);
         if (i < arrayTwo.Length - 1)
             System.Console.Write(", ");
     }
-    System.Console.WriteLine("]");
     Console.ResetColor();
+    System.Console.WriteLine("]");
+    
 }
 
 int length = Prompt("Длина массива: ");
 int min = Prompt("Минимальное значение: ");
 int max = Prompt("Максимальное значене: ");
 int[] array = GenerateArray(length, min, max);
-PrintArray(array, Reverse(array));
+PrintArray(array, CopyArray(array));

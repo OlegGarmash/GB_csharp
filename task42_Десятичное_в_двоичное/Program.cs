@@ -8,7 +8,9 @@
 int Prompt(string massage)
 {
     System.Console.Write(massage);
+    Console.ForegroundColor = ConsoleColor.DarkGreen;
     int result = Convert.ToInt32(Console.ReadLine());
+    Console.ResetColor();
     return result;
 }
 
@@ -32,7 +34,7 @@ int[] IntToBinary(int number)
 
 void PrintArray(int[] arrayOne)
 {
-    System.Console.Write("Двоичное число: ");
+    System.Console.Write("\nДвоичное число: ");
     Console.ForegroundColor = ConsoleColor.DarkBlue;
     for (int i = 0; i < arrayOne.Length; i++)
     {
