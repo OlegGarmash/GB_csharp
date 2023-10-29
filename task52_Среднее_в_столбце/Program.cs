@@ -49,6 +49,7 @@ double[] FindAverageInColumns(int[,] matrixOne)
 
 void PrintMatrix(int[,] matrixOne, double[] arrayOne)
 {
+    System.Threading.Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo("en-US");
     System.Console.WriteLine("\nДвумерный массив:");
     Console.ForegroundColor = ConsoleColor.DarkBlue;
     for (int i = 0; i < matrixOne.GetLength(0); i++)

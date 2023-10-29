@@ -1,4 +1,4 @@
-﻿/*
+﻿ /*
 Напишите программу, которая на вход принимает позиции элемента в двумерном массиве,
 и возвращает значение этого элемента или же указание, что такого элемента нет.
 Например, задан массив: 
@@ -31,25 +31,6 @@ int[,] CreateIncreasingMatrix(int rows, int columns, int coefficient)
     }
     return matrix;
 }
-
-/*int[] FindNumberByPosition(int[,] matrixOne, int rowPosition, int columnPosition)
-{
-    int[] findNumber = new int[2];
-    findNumber[1] = 0;
-    if (rowPosition > matrixOne.GetLength(0) - 1 || columnPosition > matrixOne.GetLength(1) - 1)
-        findNumber[0] = 0;
-    else
-        findNumber[0] = matrixOne[rowPosition, columnPosition];
-    return findNumber;
-}*/
-
-/*void PrintCheckIfError(int[] find, int x, int y)
-{
-    if (find[0] > 0)
-        System.Console.WriteLine($"Число на позиции [{x}, {y}] равно {find[0]}.");
-    else
-        System.Console.WriteLine($"Строка или столбец не соответствует матрице.");
-}*/
 
 void PrintMatrix(int[,] matrixOne, int x, int y)
 {
@@ -84,4 +65,3 @@ int posX = Prompt("Введи номер строки: ");
 int posY = Prompt("Введи номер столбца: ");
 int[,] matrix = CreateIncreasingMatrix(rows, columns, k);
 PrintMatrix(matrix, posX, posY);
-//PrintCheckIfError(FindNumberByPosition(matrix, posX, posY), posX, posY);
