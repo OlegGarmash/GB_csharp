@@ -37,7 +37,7 @@ int DiagonalSum(int[,] matrixOne)
         for (int j = 0; j < matrixOne.GetLength(1); j++)
         {
             if (i == j)
-            sum = sum + matrixOne[i, j];
+                sum = sum + matrixOne[i, j];
         }
     }
     return sum;
@@ -51,14 +51,35 @@ void PrintMatrix(int[,] matrixOne, int sum)
     {
         for (int j = 0; j < matrixOne.GetLength(1); j++)
         {
+            if (i == j)
+                Console.ForegroundColor = ConsoleColor.DarkYellow;
+            else
+                Console.ForegroundColor = ConsoleColor.DarkBlue;
             System.Console.Write(matrixOne[i, j]);
             if (j < matrixOne.GetLength(1) - 1)
                 System.Console.Write("\t");
-            else System.Console.WriteLine();
+            else
+                System.Console.WriteLine();
         }
     }
     Console.ResetColor();
-    System.Console.WriteLine($"\nСумма главной диагонали равна: {sum}");
+    System.Console.Write($"\nСумма главной диагонали: ");
+    for (int i = 0; i < matrixOne.GetLength(0); i++)
+    {
+        for (int j = 0; j < matrixOne.GetLength(1); j++)
+        {
+            Console.ForegroundColor = ConsoleColor.DarkBlue;
+
+            if (i == j)
+            {
+                System.Console.Write(matrixOne[i, j]);
+                if (i < matrixOne.GetLength(0) - 1 && j < matrixOne.GetLength(1) - 1)
+                    System.Console.Write(" + ");
+            }
+        }
+    }
+    System.Console.Write($" = {sum}");
+    Console.ResetColor();
 }
 
 int rows = Prompt("Количество строк: ");

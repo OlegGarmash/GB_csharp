@@ -17,33 +17,37 @@ int Prompt(string massage)
     return result;
 }
 
-double[,] GenerateMatrix(int rows, int columns, int minValue, int maxValue)
+int[,] CreateIncreasingMatrix(int rows, int columns, int coefficient)
 {
-    double[,] matrix = new double[rows, columns];
+    int[,] matrix = new int[rows, columns];
+    int temp = 1;
     for (int i = 0; i < rows; i++)
     {
         for (int j = 0; j < columns; j++)
         {
-            matrix[i, j] = new Random().Next(minValue, maxValue + 1);
+            matrix[i, j] = temp;
+            temp = temp + coefficient;
         }
     }
     return matrix;
 }
 
-double[] ColumnsAverage(int[,] matrixOne)
+double[] FindAverageInColumns(int[,] matrixOne)
 {
-    double[] average = new double[matrixOne.GetLength(0)];
-    for (int i = 0; i < matrixOne.GetLength(1); i++)
+    double[] average = new double[matrixOne.GetLength(1)];
+    for (int j = 0; j < matrixOne.GetLength(1); j++)
     {
-        for (int j = 0; j < matrixOne.GetLength(0); j++)
+        double temp = 0;
+        for (int i = 0; i < matrixOne.GetLength(0); i++)
         {
-            average[j] = matrixOne[j] + average[j];
+            temp = matrixOne[i, j] + temp;
         }
+        average[j] = Math.Round(temp / matrixOne.GetLength(0), 2);
     }
     return average;
 }
 
-void PrintMatrix(double[,] matrixOne)
+void PrintMatrix(int[,] matrixOne, double[] arrayOne)
 {
     System.Console.WriteLine("\nДвумерный массив:");
     Console.ForegroundColor = ConsoleColor.DarkBlue;
@@ -54,15 +58,25 @@ void PrintMatrix(double[,] matrixOne)
             System.Console.Write(matrixOne[i, j]);
             if (j < matrixOne.GetLength(1) - 1)
                 System.Console.Write("\t");
-            else System.Console.WriteLine();
+            else
+                System.Console.WriteLine();
         }
+    }
+    Console.ResetColor();
+    System.Console.WriteLine("\nСреднее значение в колонках:");
+    Console.ForegroundColor = ConsoleColor.DarkYellow;
+    for (int i = 0; i < arrayOne.Length; i++)
+    {
+        System.Console.Write("{0:0.00}", arrayOne[i]);
+        if (i < arrayOne.Length - 1)
+            System.Console.Write("\t");
     }
     Console.ResetColor();
 }
 
 int rows = Prompt("Количество строк: ");
 int columns = Prompt("Количество столбцов: ");
-int min = Prompt("Минимальное значение: ");
-int max = Prompt("Максимальное значене: ");
-double[,] matrix = GenerateMatrix(rows, columns, min, max);
-PrintMatrix(matrix);
+int k = Prompt("Введите коэффициент матрицы: ");
+int[,] matrix = CreateIncreasingMatrix(rows, columns, k);
+PrintMatrix(matrix, FindAverageInColumns(matrix));
+
